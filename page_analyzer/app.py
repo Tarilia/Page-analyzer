@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
 @app.route('/')
-def get_hello():
-    return 'Hello! There will be a page analyzer here.'
+def index():
+    return render_template('index.html')
