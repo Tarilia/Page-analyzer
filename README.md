@@ -3,4 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/4e6d0665b9c3bf7f4540/maintainability)](https://codeclimate.com/github/Tarilia/python-project-83/maintainability)
 
 ### Page Analyzer
-[Demo](https://page-analyzer-0faw.onrender.com/)
+[Demo](https://page-analyzer-pv9i.onrender.com)
