@@ -6,6 +6,7 @@ from page_analyzer.url_processing import validate_url, normalize_url
 from page_analyzer.database import (get_url_name, add_url, get_url_id,
                                     get_all_urls, add_checks_url,
                                     get_checks_url)
+import requests
 
 
 load_dotenv()
@@ -55,6 +56,13 @@ def show_info_url(id):
 
 @app.post('/urls/<id>/checks')
 def check_url(id):
-    add_checks_url(id, date.today())
-    flash('Страница успешно проверена', 'success')
+    url = get_url_id(id)['name']
+    response = requests.get(url)
+    response.raise_for_status()
+    if response:
+        flash('Страница успешно проверена', 'success')
+        status_code = response.status_code
+        add_checks_url(id, status_code, date.today())
+    else:
+        flash('Произошла ошибка при проверке', 'danger')
     return redirect(url_for('show_info_url', id=id), code=302)

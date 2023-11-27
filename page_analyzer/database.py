@@ -36,7 +36,7 @@ def add_url(cur, url, created_at):
 
 @database_connection
 def get_url_id(cur, id):
-    cur.execute("SELECT * FROM urls WHERE id=%s", (id,))
+    cur.execute("SELECT * FROM urls WHERE id=%s", (id, ))
     url_data = cur.fetchone()
     return url_data
 
@@ -49,15 +49,16 @@ def get_all_urls(cur):
 
 
 @database_connection
-def add_checks_url(cur, url_id, created_at_check):
-    cur.execute("INSERT INTO url_checks (url_id, created_at) VALUES (%s, %s) \
-                RETURNING id, created_at_check", (url_id, created_at_check))
-    return None
+def add_checks_url(cur, url_id, status_code, created_at):
+    cur.execute("INSERT INTO url_checks (url_id, status_code, created_at) \
+                VALUES (%s, %s, %s) RETURNING id, status_code, created_at",
+                (url_id, status_code, created_at))
+    return True
 
 
 @database_connection
 def get_checks_url(cur, id):
     cur.execute("SELECT * FROM url_checks WHERE id=%s \
-                ORDER BY id DESC", (id,))
+                ORDER BY id DESC", (id, ))
     checks = cur.fetchall()
     return checks
