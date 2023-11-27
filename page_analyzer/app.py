@@ -4,7 +4,8 @@ from datetime import date
 from dotenv import load_dotenv
 from page_analyzer.url_processing import validate_url, normalize_url
 from page_analyzer.database import (get_url_name, add_url, get_url_id,
-                                    get_all_urls)
+                                    get_all_urls, add_checks_url,
+                                    get_checks_url)
 
 
 load_dotenv()
@@ -47,10 +48,13 @@ def show_added_urls():
 
 @app.route('/urls/<id>')
 def show_info_url(id):
-    url_id = get_url_id(id)
-    id = id
-    name = url_id['name']
-    created_at = url_id['created_at']
-    return render_template('url.html', id=id, name=name,
-                           created_at=created_at)
+    url_data = get_url_id(id)
+    checks = get_checks_url(id)
+    return render_template('url.html', url=url_data, checks=checks)
 
+
+@app.post('/urls/<id>/checks')
+def check_url(id):
+    add_checks_url(id, date.today())
+    flash('Страница успешно проверена', 'success')
+    return redirect(url_for('show_info_url', id=id), code=302)

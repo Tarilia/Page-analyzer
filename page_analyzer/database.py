@@ -46,3 +46,18 @@ def get_all_urls(cur):
     cur.execute("SELECT * FROM urls ORDER BY id DESC")
     urls = cur.fetchall()
     return urls
+
+
+@database_connection
+def add_checks_url(cur, url_id, created_at_check):
+    cur.execute("INSERT INTO url_checks (url_id, created_at) VALUES (%s, %s) \
+                RETURNING id, created_at_check", (url_id, created_at_check))
+    return None
+
+
+@database_connection
+def get_checks_url(cur, id):
+    cur.execute("SELECT * FROM url_checks WHERE id=%s \
+                ORDER BY id DESC", (id,))
+    checks = cur.fetchall()
+    return checks
