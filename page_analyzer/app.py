@@ -2,7 +2,8 @@ from flask import (Flask, render_template, request, flash, redirect, url_for)
 import os
 from datetime import date
 from dotenv import load_dotenv
-from page_analyzer.url_processing import validate_url, normalize_url
+from page_analyzer.url_processing import (validate_url, normalize_url,
+                                          parse_response)
 from page_analyzer.database import (get_url_name, add_url, get_url_id,
                                     get_all_urls, add_checks_url,
                                     get_checks_url)
@@ -57,12 +58,24 @@ def show_info_url(id):
 @app.post('/urls/<id>/checks')
 def check_url(id):
     url = get_url_id(id)['name']
-    response = requests.get(url)
-    response.raise_for_status()
-    if response:
-        flash('Страница успешно проверена', 'success')
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
         status_code = response.status_code
-        add_checks_url(id, status_code, date.today())
-    else:
+        h1, title, description = parse_response(response)
+        add_checks_url(id, status_code, h1, title,
+                       description, date.today())
+        flash('Страница успешно проверена', 'success')
+    except (Exception, requests.exceptions.ConnectionError, ConnectionError):
         flash('Произошла ошибка при проверке', 'danger')
     return redirect(url_for('show_info_url', id=id), code=302)
+
+
+@app.errorhandler(500)
+def server_error(error):
+    return render_template('500.html'), 500
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404

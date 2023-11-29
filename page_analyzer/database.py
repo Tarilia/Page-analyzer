@@ -46,19 +46,21 @@ def get_all_urls(cur):
     cur.execute("SELECT DISTINCT ON (urls.id) urls.id, urls.name, \
                 url_checks.created_at, status_code FROM \
                 url_checks RIGHT JOIN urls ON \
-                urls.id=url_checks.url_id ORDER BY urls.id, \
-                created_at DESC;")
+                urls.id=url_checks.url_id ORDER BY urls.id DESC")
     urls = cur.fetchall()
     return urls
 
 
 @database_connection
-def add_checks_url(cur, id, status_code, checked_date):
+def add_checks_url(cur, id, status_code, h1, title,
+                   description, checked_date):
     url_id = get_url_id(id)['id']
-    cur.execute("INSERT INTO url_checks (url_id, status_code, created_at) \
-                VALUES (%s, %s, %s) RETURNING id, status_code, created_at",
-                (url_id, status_code, checked_date))
-    return True
+    cur.execute("INSERT INTO url_checks (url_id, status_code, h1, title, \
+                description, created_at) \
+                VALUES (%s, %s, %s, %s, %s, %s) \
+                RETURNING id, status_code, created_at",
+                (url_id, status_code, h1, title,
+                 description, checked_date))
 
 
 @database_connection
