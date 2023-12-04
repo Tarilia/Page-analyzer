@@ -6,9 +6,12 @@ A demo version of the site can be viewed [here](https://page-analyzer-pv9i.onren
 The project was created to check sites for [SEO](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F)
 suitability, analyzes HTML tags and displays information in a table for each site.
 
+### Visualization:
+[![viber-2023-12-04-20-00-59-964.jpg](https://i.postimg.cc/HnN5qW0K/viber-2023-12-04-20-00-59-964.jpg)](https://postimg.cc/D4q8sTMd)
+
 ### Installing and launching the application:
 ```
-$ git clone git@github.com:Tarilia/python-project-83.git
+$ download the project
 $ cd python-project-83  
 $ make install
 $ make dev - start server in developer enironment
@@ -18,13 +21,16 @@ $ make dev - start server in developer enironment
 $ make start - start production gunicorn server
 ```
 ### Languages and Tools:
- - Python "^3.10"
- - Pip
- - Poetry
- - Flask
- - Gunicorn
- - Python-dotenv
- - Psycopg2-binary
- - Pytest-cov
- - Beautifulsoup4
- - Postgresql
+```
+ - [python "^3.10"](https://www.python.org/)
+ - [poetry](https://python-poetry.org/)
+ - [flask](https://flask.palletsprojects.com/en/3.0.x/)
+ - [gunicorn](https://docs.gunicorn.org/en/stable/)
+ - [python-dotenv](https://github.com/theskumar/python-dotenv)
+ - [psycopg2](https://www.psycopg.org/)
+ - [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+ - [postgresql](https://www.postgresql.org/)
+ - [requests](https://requests.readthedocs.io/en/latest/)
+ - [validators](https://python-validators.github.io/validators/)
+ - [flake8](https://flake8.pycqa.org/)
+```
