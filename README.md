@@ -8,6 +8,8 @@ suitability, analyzes HTML tags and displays information in a table for each sit
 
 ### Visualization:
 [![viber-2023-12-04-20-00-59-964.jpg](https://i.postimg.cc/HnN5qW0K/viber-2023-12-04-20-00-59-964.jpg)](https://postimg.cc/D4q8sTMd)
+[![viber-2023-12-04-20-01-00-019.jpg](https://i.postimg.cc/jdWyzNtr/viber-2023-12-04-20-01-00-019.jpg)](https://postimg.cc/hfBJnXXC)
+[![viber-2023-12-04-20-01-00-041.jpg](https://i.postimg.cc/jq3zwvVX/viber-2023-12-04-20-01-00-041.jpg)](https://postimg.cc/4ntKj6x7)
 
 ### Installing and launching the application:
 ```
@@ -21,7 +23,6 @@ $ make dev - start server in developer enironment
 $ make start - start production gunicorn server
 ```
 ### Languages and Tools:
-```
  - [python "^3.10"](https://www.python.org/)
  - [poetry](https://python-poetry.org/)
  - [flask](https://flask.palletsprojects.com/en/3.0.x/)
@@ -33,4 +34,4 @@ $ make start - start production gunicorn server
  - [requests](https://requests.readthedocs.io/en/latest/)
  - [validators](https://python-validators.github.io/validators/)
  - [flake8](https://flake8.pycqa.org/)
-```
+
