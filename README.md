@@ -7,8 +7,10 @@ The project was created to check sites for [SEO](https://ru.wikipedia.org/wiki/%
 suitability, analyzes HTML tags and displays information in a table for each site.
 
 ### Visualization:
-[![viber-2023-12-04-20-00-59-964.jpg](https://i.postimg.cc/HnN5qW0K/viber-2023-12-04-20-00-59-964.jpg)](https://postimg.cc/D4q8sTMd)
+[![viber-2023-12-04-20-12-03-467.jpg](https://i.postimg.cc/dQ4QBSnb/viber-2023-12-04-20-12-03-467.jpg)](https://postimg.cc/dDZKQ6b6)
+
 [![viber-2023-12-04-20-01-00-019.jpg](https://i.postimg.cc/jdWyzNtr/viber-2023-12-04-20-01-00-019.jpg)](https://postimg.cc/hfBJnXXC)
+
 [![viber-2023-12-04-20-01-00-041.jpg](https://i.postimg.cc/jq3zwvVX/viber-2023-12-04-20-01-00-041.jpg)](https://postimg.cc/4ntKj6x7)
 
 ### Installing and launching the application:
