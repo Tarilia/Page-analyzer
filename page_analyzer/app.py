@@ -6,7 +6,7 @@ from page_analyzer.url_processing import (validate_url, normalize_url)
 from page_analyzer.parser import parse_response
 from page_analyzer.database import (get_url_name, add_url, get_url_id,
                                     get_all_urls, add_checks_url,
-                                    get_checks_url)
+                                    get_checks_url, get_all_check)
 import requests
 
 
@@ -45,6 +45,11 @@ def post_urls():
 @app.route('/urls')
 def show_added_urls():
     urls = get_all_urls()
+    for url in urls:
+        data_check = get_all_check(url['id'])
+        if data_check:
+            url['created_at'] = data_check['created_at']
+            url['status_code'] = data_check['status_code']
     return render_template('urls.html', urls=urls)
 
 
