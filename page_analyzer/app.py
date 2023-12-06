@@ -2,8 +2,8 @@ from flask import (Flask, render_template, request, flash, redirect, url_for)
 import os
 from datetime import date
 from dotenv import load_dotenv
-from page_analyzer.url_processing import (validate_url, normalize_url,
-                                          parse_response)
+from page_analyzer.url_processing import (validate_url, normalize_url)
+from page_analyzer.parser import parse_response
 from page_analyzer.database import (get_url_name, add_url, get_url_id,
                                     get_all_urls, add_checks_url,
                                     get_checks_url)
