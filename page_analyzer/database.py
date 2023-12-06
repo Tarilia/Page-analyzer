@@ -43,12 +43,17 @@ def get_url_id(cur, id):
 
 @database_connection
 def get_all_urls(cur):
-    cur.execute("SELECT DISTINCT ON (urls.id) urls.id, urls.name, \
-                url_checks.created_at, status_code FROM \
-                url_checks RIGHT JOIN urls ON \
-                urls.id=url_checks.url_id ORDER BY urls.id DESC")
-    urls = cur.fetchall()
-    return urls
+    cur.execute("SELECT id, name FROM urls ORDER BY id DESC")
+    data = cur.fetchall()
+    return data
+
+
+@database_connection
+def get_all_check(cur, url_id):
+    cur.execute("SELECT status_code, created_at FROM url_checks \
+                WHERE url_id = (%s) ORDER BY id DESC", (url_id,))
+    data = cur.fetchone()
+    return data
 
 
 @database_connection
