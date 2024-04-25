@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  page-analyzer:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    container_name: page-analyzer
+    restart: unless-stopped
+    volumes:
+      - .:/page-analyzer
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    command: poetry run flask --app page_analyzer:app --debug run
+
+
+  db:
+    image: postgres
+    container_name: page-analyzerdb
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
