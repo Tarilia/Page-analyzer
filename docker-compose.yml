@@ -16,13 +16,14 @@ services:
       - .env
     depends_on:
       - db
-    command: poetry run flask --app page_analyzer:app --debug run
-
+    command: poetry run flask --app page_analyzer:app --debug run --host=0.0.0.0 --port=8000
 
   db:
     image: postgres
-    container_name: page-analyzerdb
+    container_name: page-analyzer_db
     restart: unless-stopped
+    ports:
+      - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
