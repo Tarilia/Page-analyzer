@@ -5,7 +5,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-      target: dev
     container_name: page-analyzer
     restart: unless-stopped
     volumes:
@@ -16,18 +15,13 @@ services:
       - .env
     depends_on:
       - db
-    command: poetry run flask --app page_analyzer:app --debug run --host=0.0.0.0 --port=8000
+    command: sh -c "poetry run gunicorn -w 5 -b 0.0.0.0:8000 page_analyzer:app"
 
   db:
     image: postgres
     container_name: page-analyzer_db
     restart: unless-stopped
-    ports:
-      - 5432:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
     env_file:
       - .env
-
-volumes:
-  postgres_data:
