@@ -7,6 +7,7 @@ from page_analyzer.parser import parse_response
 from page_analyzer.database import (get_url_name, add_url, get_url_id,
                                     get_all_urls, add_checks_url,
                                     get_checks_url, get_all_check)
+from page_analyzer.tasks import check_all_urls
 import requests
 
 
@@ -74,6 +75,13 @@ def check_url(id):
     except (Exception, requests.exceptions.ConnectionError, ConnectionError):
         flash('Произошла ошибка при проверке', 'danger')
     return redirect(url_for('show_info_url', id=id), code=302)
+
+
+@app.post('/urls/checks')
+def check_urls():
+    check_all_urls.delay()
+    flash('Процесс проверки страниц запущен', 'success')
+    return redirect(url_for('show_added_urls'), code=302)
 
 
 @app.errorhandler(500)

@@ -4,6 +4,9 @@
 <main class="flex-grow-1">
   <div class="container-lg mt-3">
     <h1>Сайты</h1>
+    <form method="post" action="{{ url_for('check_urls') }}">
+      <input type="submit" class="btn btn-primary" value="Запустить проверку всех сайтов">
+    </form>
     <div class="table-responsive">
       <table class="table table-bordered table-hover text-nowrap" data-test="urls">
         <thead>

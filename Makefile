@@ -18,3 +18,9 @@ collect:
 	poetry build
 	poetry publish --dry-run
 	pip install --user --force-reinstall dist/*.whl
+
+celery:
+	celery -A page_analyzer.celery_config.celery_app worker --loglevel=info
+
+redis:
+	docker run -d --name=analyzer_redis_example -p 6333:6379 redis:latest
