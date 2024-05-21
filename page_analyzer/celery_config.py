@@ -1,6 +1,7 @@
 import os
 
 from celery import Celery
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,3 +21,10 @@ def make_celery():
 
 
 celery_app = make_celery()
+
+celery_app.conf.beat_schedule = {
+    'process_urls_checks_every_minutes': {
+        'task': 'page_analyzer.tasks.check_all_urls',
+        'schedule': crontab(minute='*/1')
+    }
+}

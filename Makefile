@@ -22,5 +22,8 @@ collect:
 celery:
 	celery -A page_analyzer.celery_config.celery_app worker --loglevel=info
 
+celery_beat:
+	celery -A page_analyzer.celery_config.celery_app beat --loglevel=info
+
 redis:
 	docker run -d --name=analyzer_redis_example -p 6333:6379 redis:latest
