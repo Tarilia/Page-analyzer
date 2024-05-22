@@ -11,7 +11,7 @@
 
 [![viber-2023-12-04-20-01-00-019.jpg](https://i.postimg.cc/jdWyzNtr/viber-2023-12-04-20-01-00-019.jpg)](https://postimg.cc/hfBJnXXC)
 
-[![viber-2023-12-04-20-01-00-041.jpg](https://i.postimg.cc/jq3zwvVX/viber-2023-12-04-20-01-00-041.jpg)](https://postimg.cc/4ntKj6x7)
+[![2024-05-22-144405.png](https://i.postimg.cc/9X62szjn/2024-05-22-144405.png)](https://postimg.cc/V5W2Cfvq)
 
 ### Установка:
 ```
