@@ -18,6 +18,7 @@ requests = "^2.31.0"
 beautifulsoup4 = "^4.12.2"
 celery = "^5.4.0"
 redis = "^5.0.4"
+pytz = "^2024.1"
 
 
 [tool.poetry.group.dev.dependencies]

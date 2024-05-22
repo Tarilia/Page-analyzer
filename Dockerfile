@@ -7,8 +7,7 @@ WORKDIR /page_analyzer
 
 RUN pip install --upgrade pip --no-cache-dir && \
     pip install poetry --no-cache-dir && \
-    poetry config virtualenvs.create false && \
-    poetry config installer.max-workers 1
+    poetry config virtualenvs.create false
 
 COPY pyproject.toml poetry.lock ./
 
